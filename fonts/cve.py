@@ -1,3 +1,4 @@
+#NIST https://nvd.nist.gov/vuln
 import requests
 from bs4 import BeautifulSoup
 from typing import List, Dict
@@ -31,3 +32,6 @@ def scraping_CVEs() -> List[Dict] :
             data_list.append(vuln_data)  
     
     return data_list 
+
+for i in scraping_CVEs():
+    print(i)
