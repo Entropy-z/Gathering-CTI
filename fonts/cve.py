@@ -29,4 +29,5 @@ def scraping_CVEs() -> List[Dict] :
             vuln_data['Description'] = summary_tags[0] if summary_tags else ''
             
             data_list.append(vuln_data)  
+    
     return data_list 
