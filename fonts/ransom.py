@@ -3,12 +3,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.ransomlook.io/recent"
-USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1788.0 uacq"
-headers = {'User-Agent': USERAGENT}
+URL = "https://www.ransomlook.io/recent"
 
-def scraping_ransom():
-    response = requests.get(url=url, headers=headers)
+def scraping_ransom(user_agent):
+    headers = {'User-Agent': user_agent}
+    response = requests.get(url=URL, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
     
     tag_main = soup.find_all('tr')

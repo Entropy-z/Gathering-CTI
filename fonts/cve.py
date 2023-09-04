@@ -4,16 +4,15 @@ from bs4 import BeautifulSoup
 from typing import List, Dict
 
 PAGES = [0, 20, 40, 60] # page 1 = 0 | page 2 = 20 | page 3 = 40 | page 4 = 60
-USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1788.0 uacq"
 
-def scraping_CVEs() -> List[Dict] :
+def scraping_CVEs(user_agent) -> List[Dict] :
     data_list = []
     
-    headers = {'User-Agent': USERAGENT}
+    headers = {'User-Agent': user_agent}
     for pg in PAGES:
         url = f"https://nvd.nist.gov/vuln/search/results?isCpeNameSearch=false&results_type=overview&form_type=Basic&search_type=all&startIndex={pg}"
         response = requests.get(url=url, headers=headers)
-        soup = BeautifulSoup(response.text, 'html.parser')
+        soup = BeautifulSoup(response.text, 'html.parser-')
         
         for i in range(0, 20):
             iter_tag = f'vuln-row-{i}'
